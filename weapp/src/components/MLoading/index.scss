@@ -1,0 +1,48 @@
+@import "../styles/base";
+
+.mask {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $zindex-modal;
+}
+
+.loading {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background: #f5f5f5;
+    color: #bbb;
+    font-size: $size-font-base * 2;
+    line-height: 1.5em;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 40px 40px 20px;
+    min-width: 180px;
+    text-align: center;
+    border-radius: 20px;
+    z-index: $zindex-message;
+
+    .spin {
+        animation: rotate 1.2s linear infinite;
+    }
+
+    .text {
+        display: block;
+        margin-top: 20px;
+        font-size: 30px;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}

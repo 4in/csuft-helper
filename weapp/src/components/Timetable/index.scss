@@ -1,0 +1,53 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.head {
+    font-size: 28px;
+    text-align: center;
+    line-height: 32px;
+}
+
+.course {
+    font-size: 26px;
+    border-top: 1PX dashed #f1f2f3;
+    margin-top: 20px;
+    padding-top: 20px;
+
+    .section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        word-break: break-word !important;
+    }
+
+    .col {
+        word-break: break-all;
+        font-size: 22px;
+    }
+
+    .col + .col {
+        border-left: 1PX dashed #f1f2f3;
+    }
+
+    .single + .single {
+        &::before {
+            display: block;
+            content: '——';
+            text-align: center;
+        }
+    }
+}

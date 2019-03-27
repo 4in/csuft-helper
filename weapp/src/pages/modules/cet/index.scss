@@ -1,0 +1,35 @@
+page {
+    background: #f7f7f7;
+}
+
+.score {
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, .04);
+    font-size: 32px;
+    color: #515a6e;
+
+    .title {
+        padding-bottom: 10px;
+        border-bottom: 1PX dashed #f1f2f3;
+    }
+
+    .block {
+        margin: 6px 0;
+        text-align: center;
+        border: 1PX solid #f9f9f9;
+    }
+
+    .footer {
+        padding-top: 10px;
+        border-top: 1PX dashed #f1f2f3;
+        color: #abc;
+        font-size: 28px;
+    }
+}
+
+.white {
+    background: #fff !important;
+}

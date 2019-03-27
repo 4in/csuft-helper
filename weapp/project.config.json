@@ -1,0 +1,13 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "csuft-helper",
+  "description": "林科大助手",
+  "appid": "wx067d9cb1e1407f90",
+  "setting": {
+    "urlCheck": false,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram"
+}

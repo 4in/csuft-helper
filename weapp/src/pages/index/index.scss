@@ -1,0 +1,58 @@
+.form {
+    .logo {
+        margin-top: 100px;
+        width: 120px;
+        height: 120px;
+    }
+
+    .welcome {
+        display: block;
+        margin: 10px 0 80px;
+        font-size: 44px;
+        font-weight: 300;
+    }
+
+    .inputs {
+        margin-top: 40px;
+        display: block;
+    }
+
+    .btn-wrapper {
+        margin-top: 70px;
+    }
+}
+
+.plant {
+    box-sizing: border-box;
+    padding: 0;
+    position: fixed;
+    right: -50px;
+    bottom: 0;
+    z-index: -1;
+
+    image {
+        position: absolute;
+        width: 400px;
+        margin: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.captcha {
+    display: block;
+    margin: 20px auto;
+    width: 184px;
+    height: 68px;
+    border: 1PX solid #f1f2f3;
+}
+
+.term {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    color: rgba(#808695, .5);
+    font-size: 28px;
+}
