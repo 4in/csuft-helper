@@ -2,6 +2,7 @@ import Taro, {Component} from '@tarojs/taro';
 import {Image, View} from '@tarojs/components';
 import CustomSwiper from '../../components/CustomSwiper';
 import request from '../../utils/request';
+import jinrishici from '../../libs/jinrishici';
 import './index.scss';
 import img_banner from '../../assets/banner.png';
 import img_tower from '../../assets/tower.svg';
@@ -13,10 +14,15 @@ const default_modules = [
     page: '/pages/modules/timetable/index',
   }
 ];
+
 class Home extends Component {
+  config = {
+    enablePullDownRefresh: true,
+  };
   state = {
     banners: [{image: img_banner}],
-    modules: Taro.getStorageSync('modules') || default_modules
+    modules: Taro.getStorageSync('modules') || default_modules,
+    poem: ''
   };
 
   onShareAppMessage(obj) {
@@ -27,6 +33,11 @@ class Home extends Component {
 
   componentDidMount() {
     this.fetchModules();
+    this.fetchPoem();
+  }
+
+  onPullDownRefresh() {
+    this.fetchPoem();
   }
 
   fetchModules = () => {
@@ -40,13 +51,23 @@ class Home extends Component {
     });
   };
 
+  fetchPoem = () => {
+    jinrishici(res => {
+      Taro.stopPullDownRefresh();
+      console.log(res);
+      if (res.status === 'success') {
+        this.setState({poem: res.data.content});
+      }
+    });
+  };
+
   gotoModule = (path) => {
     if (!path) return;
     Taro.navigateTo({url: path});
   };
 
   render() {
-    const {banners, modules} = this.state;
+    const {banners, modules, poem} = this.state;
     return (
       <View>
         <CustomSwiper data={banners}/>
@@ -60,6 +81,7 @@ class Home extends Component {
             ))
           }
         </View>
+        <View className='poem'>{poem}</View>
       </View>
     )
   }

@@ -304,7 +304,8 @@ router.get('/timetable', async (ctx, next) => {
   let note = $(trs[trs.length - 1]).text();
   ctx.body = {
     code: 0,
-    data: {sections, note}
+    data: {sections, note},
+    term_start: 1551024000
   };
   await next();
 });

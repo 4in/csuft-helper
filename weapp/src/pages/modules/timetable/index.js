@@ -18,6 +18,7 @@ class Cet extends Component {
     timetable: [],
     note: '',
     week: 0,
+    term_start: 0,
 
     specific: true,
     modal_visible: false,
@@ -39,9 +40,6 @@ class Cet extends Component {
       return;
     }
     this.fetchData();
-    this.setState({
-      week: this.getCurrentWeek()
-    });
   }
 
   onPullDownRefresh() {
@@ -53,7 +51,12 @@ class Cet extends Component {
     try {
       const res = await request.get(`/jiaowu/timetable`);
       if (res.code === 0) {
-        this.setState({timetable: res.data.sections, note: res.data.note});
+        this.setState({timetable: res.data.sections, note: res.data.note, term_start: res.term_start}, () => {
+          this.setState({
+            specific: true,
+            week: this.getCurrentWeek()
+          });
+        });
       } else {
         throw new Error(res.msg);
       }
@@ -72,8 +75,9 @@ class Cet extends Component {
   };
 
   getCurrentWeek = () => {
+    const {term_start} = this.state;
     let timeStamp = new Date() / 1000;
-    let diff = timeStamp - 1551024000;
+    let diff = timeStamp - term_start;
     return Math.ceil(diff / 86400 / 7);
   };
 
