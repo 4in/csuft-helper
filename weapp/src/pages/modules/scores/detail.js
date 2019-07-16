@@ -1,23 +1,23 @@
-import {Component} from '@tarojs/taro';
-import {View, Text} from '@tarojs/components';
-import NoData from '../../../components/NoData';
+import { Text, View } from '@tarojs/components';
+import { Component } from '@tarojs/taro';
+import { $Loading } from '../../../components/Base';
 import MLoading from '../../../components/MLoading';
-import {$Loading} from '../../../components/Base';
+import NoData from '../../../components/NoData';
 import request from '../../../utils/request';
-import {showModal} from '../../../utils/utils';
+import { showModal } from '../../../utils/utils';
 import './detail.scss';
 
 class Detail extends Component {
   config = {
     navigationBarTitleText: '查询结果',
     enablePullDownRefresh: true,
-    backgroundColor: '#f7f7f7'
+    backgroundColor: '#f7f7f7',
   };
   state = {
     term: '',
     attr: '',
     disp: '',
-    scores: []
+    scores: [],
   };
 
   onShareAppMessage(obj) {
@@ -29,7 +29,7 @@ class Detail extends Component {
 
   componentDidMount() {
     this.setState({
-      ...this.$router.params
+      ...this.$router.params,
     }, () => {
       this.fetchData();
     });
@@ -40,13 +40,13 @@ class Detail extends Component {
   }
 
   fetchData = async () => {
-    const {term, attr, disp} = this.state;
+    const { term, attr, disp } = this.state;
     $Loading({});
     try {
       const res = await request.get(`/jiaowu/scores?term=${term}&attr=${attr}&disp=${disp}`);
       $Loading.hide();
       if (res.code === 0) {
-        this.setState({scores: res.data});
+        this.setState({ scores: res.data });
       } else {
         showModal(res.msg);
       }
@@ -57,7 +57,7 @@ class Detail extends Component {
   };
 
   render() {
-    const {scores} = this.state;
+    const { scores } = this.state;
     return (
       <View className='g-container'>
         <MLoading id='loading' m-class='white'/>
@@ -65,7 +65,8 @@ class Detail extends Component {
           {
             scores.map(s => (
               <View key={s.order} className='card'>
-                <View className='title'>{s.order}.<Text selectable>{s.title}</Text><Text className='id' selectable>({s.id})</Text></View>
+                <View className='title'>{s.order}.<Text selectable>{s.title}</Text><Text className='id'
+                                                                                         selectable>({s.id})</Text></View>
                 <View className='data'>
                   <View className='row field'>
                     <View className='col-3'>成绩</View>

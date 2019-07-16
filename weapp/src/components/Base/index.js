@@ -13,7 +13,7 @@ const getCtx = selector => {
 
 
 const Loading = options => {
-  const {selector = '#loading'} = options;
+  const { selector = '#loading' } = options;
   const ctx = getCtx(selector);
   ctx.$component.handleShow(options);
 };
@@ -24,6 +24,6 @@ Loading.hide = (selector = '#loading') => {
 };
 
 export {
-  Loading as $Loading
+  Loading as $Loading,
 };
 

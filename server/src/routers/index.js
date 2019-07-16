@@ -30,14 +30,12 @@ router.get('/modules', async (ctx, next) => {
     code: 0,
     data: [
       {
-        // image: '/assets/shark.svg',
-        image: 'http://cdn.dlmu.waits.top/icons/2.5D/shark.svg',
+        image: '/assets/shark.svg',
         title: '成绩查询',
         page: '/pages/modules/scores/index',
       },
       {
-        // image: '/assets/star.svg',
-        image: 'http://cdn.dlmu.waits.top/icons/2.5D/star.svg',
+        image: '/assets/star.svg',
         title: '等级考试成绩',
         page: '/pages/modules/cet/index',
       },

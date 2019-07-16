@@ -1,18 +1,18 @@
-import Taro, {Component} from '@tarojs/taro';
-import {Image, View} from '@tarojs/components';
-import CustomSwiper from '../../components/CustomSwiper';
-import request from '../../utils/request';
-import jinrishici from '../../libs/jinrishici';
-import './index.scss';
+import { Image, View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
 import img_banner from '../../assets/banner.png';
 import img_tower from '../../assets/tower.svg';
+import CustomSwiper from '../../components/CustomSwiper';
+import jinrishici from '../../libs/jinrishici';
+import request from '../../utils/request';
+import './index.scss';
 
 const default_modules = [
   {
     image: img_tower,
     title: '学期课表',
     page: '/pages/modules/timetable/index',
-  }
+  },
 ];
 
 class Home extends Component {
@@ -20,9 +20,9 @@ class Home extends Component {
     enablePullDownRefresh: true,
   };
   state = {
-    banners: [{image: img_banner}],
+    banners: [{ image: img_banner, path: '/pages/about/index' }],
     modules: Taro.getStorageSync('modules') || default_modules,
-    poem: ''
+    poem: '',
   };
 
   onShareAppMessage(obj) {
@@ -45,7 +45,7 @@ class Home extends Component {
       if (e.code === 0) {
         Taro.setStorageSync('modules', e.data);
         this.setState({
-          modules: e.data
+          modules: e.data,
         });
       }
     });
@@ -56,18 +56,18 @@ class Home extends Component {
       Taro.stopPullDownRefresh();
       console.log(res);
       if (res.status === 'success') {
-        this.setState({poem: res.data.content});
+        this.setState({ poem: res.data.content });
       }
     });
   };
 
   gotoModule = (path) => {
     if (!path) return;
-    Taro.navigateTo({url: path});
+    Taro.navigateTo({ url: path });
   };
 
   render() {
-    const {banners, modules, poem} = this.state;
+    const { banners, modules, poem } = this.state;
     return (
       <View>
         <CustomSwiper data={banners}/>
@@ -83,7 +83,7 @@ class Home extends Component {
         </View>
         <View className='poem'>{poem}</View>
       </View>
-    )
+    );
   }
 }
 

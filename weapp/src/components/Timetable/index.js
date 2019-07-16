@@ -1,11 +1,11 @@
-import {Component} from '@tarojs/taro';
-import {View} from '@tarojs/components';
+import { View } from '@tarojs/components';
+import { Component } from '@tarojs/taro';
 import './index.scss';
 
 class Timetable extends Component {
 
   handleShow = (courses) => {
-    let {week = 0, onShow} = this.props;
+    let { week = 0, onShow } = this.props;
     week = Number(week);
     if (typeof onShow !== 'function') return;
     let arg = week === 0 ? courses : courses.filter(v => v.w.indexOf(week) > -1);
@@ -13,7 +13,7 @@ class Timetable extends Component {
   };
 
   render() {
-    let {data, week} = this.props;
+    let { data, week } = this.props;
     week = Number(week);
     return (
       <View>
@@ -56,7 +56,7 @@ class Timetable extends Component {
 
 Timetable.defaultProps = {
   data: [],
-  week: 0
+  week: 0,
 };
 
 export default Timetable;

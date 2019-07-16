@@ -10,6 +10,7 @@ class App extends Component {
     pages: [
       'pages/index/index',
       'pages/home/index',
+      'pages/about/index',
       'pages/modules/cet/index',
       'pages/modules/scores/index',
       'pages/modules/scores/detail',

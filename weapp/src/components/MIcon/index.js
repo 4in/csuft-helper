@@ -1,13 +1,13 @@
+import { View } from '@tarojs/components';
+import { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import {Component} from '@tarojs/taro';
-import {View} from '@tarojs/components';
 import './index.scss';
 
 class MIcon extends Component {
   static externalClasses = ['m-class'];
 
   handleClick = (e) => {
-    const {onClick} = this.props;
+    const { onClick } = this.props;
     if (typeof onClick === 'function') {
       e.stopPropagation();
       onClick();
@@ -15,10 +15,10 @@ class MIcon extends Component {
   };
 
   render() {
-    const {type, spin, size, color} = this.props;
+    const { type, spin, size, color } = this.props;
     return (
       <View className={`m-class iconfont ${type === '' ? '' : 'icon-' + type} ${spin ? 'spin' : ''}`}
-            style={{fontSize: size + 'rpx', color: color}} onClick={this.handleClick}/>
+            style={{ fontSize: size + 'rpx', color }} onClick={this.handleClick}/>
     );
   }
 }
@@ -27,13 +27,13 @@ MIcon.propTypes = {
   type: PropTypes.string,
   size: PropTypes.number,
   color: PropTypes.string,
-  spin: PropTypes.bool
+  spin: PropTypes.bool,
 };
 MIcon.defaultProps = {
   type: '',
   size: 28,
   color: '',
-  spin: false
+  spin: false,
 };
 
 export default MIcon;

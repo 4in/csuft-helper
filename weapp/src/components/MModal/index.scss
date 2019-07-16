@@ -1,41 +1,41 @@
 @import "../styles/base";
 
 .mask {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: $zindex-modal;
-    background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $zindex-modal;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .modal {
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    background: #fff;
-    color: #515a6e;
-    font-size: $size-font-base * 2;
-    line-height: 1.5em;
-    margin: 0 auto;
-    box-sizing: border-box;
-    width: 540px;
-    border-radius: 20px;
-    z-index: $zindex-modal;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background: #fff;
+  color: #515a6e;
+  font-size: $size-font-base * 2;
+  line-height: 1.5em;
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 540px;
+  border-radius: 20px;
+  z-index: $zindex-modal;
 }
 
 .content {
-    padding: 30px 40px 20px;
+  padding: 30px 40px 20px;
 }
 
 .btn {
-    border-top: 1PX solid #f1f2f3;
-    padding: 20px 0;
-    text-align: center;
-    background: linear-gradient(to bottom right, #0AC4BA, #2BDA8E);
-    color: #fff;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  border-top: 1PX solid #f1f2f3;
+  padding: 20px 0;
+  text-align: center;
+  background: linear-gradient(to bottom right, #0ac4ba, #2bda8e);
+  color: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

@@ -1,20 +1,20 @@
 .ctrl {
-    margin: 20px 0;
-    font-size: 34px;
-    color: #515a6e;
-    vertical-align: middle;
-    height: 80px;
-    line-height: 80px;
-    text-align: center;
+  margin: 20px 0;
+  font-size: 34px;
+  color: #515a6e;
+  vertical-align: middle;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
 
-    .pager {
-        display: flex;
-        justify-content: space-between;
+  .pager {
+    display: flex;
+    justify-content: space-between;
 
-        .btn {
-            width: 100px;
-        }
+    .btn {
+      width: 100px;
     }
+  }
 }
 
 .modal_course {
@@ -22,19 +22,19 @@
 }
 
 .modal_course + .modal_course {
-    &::before {
-        display: block;
-        content: '';
-        width: 100%;
-        height: 1PX;
-        border-top: 1PX dashed #f1f2f3;
-        margin: 10px 0;
-    }
+  &::before {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 1PX;
+    border-top: 1PX dashed #f1f2f3;
+    margin: 10px 0;
+  }
 }
 
 .note {
-    margin-top: 30px;
-    padding: 20px 5%;
-    font-size: 30px;
-    color: #515a6e;
+  margin-top: 30px;
+  padding: 20px 5%;
+  font-size: 30px;
+  color: #515a6e;
 }

@@ -1,19 +1,19 @@
-import Taro, {Component} from '@tarojs/taro';
-import {Block, Image, Input, Text, View} from '@tarojs/components';
-import MButton from '../../components/MButton';
-import {$Loading} from '../../components/Base';
-import MModal from '../../components/MModal';
-import MLoading from '../../components/MLoading';
-import request from '../../utils/request';
-import {showModal} from '../../utils/utils';
-import './index.scss';
+import { Block, Image, Input, Text, View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
 import logo from '../../assets/logo.png';
 import plant from '../../assets/plant.png';
+import { $Loading } from '../../components/Base';
+import MButton from '../../components/MButton';
+import MLoading from '../../components/MLoading';
+import MModal from '../../components/MModal';
+import request from '../../utils/request';
+import { showModal } from '../../utils/utils';
+import './index.scss';
 
 
 export default class Index extends Component {
   config = {
-    disableScroll: true
+    disableScroll: true,
   };
 
   state = {
@@ -24,7 +24,7 @@ export default class Index extends Component {
     captcha_data: '',
     captcha_params: '',
     captcha_cookies: '',
-    modal_visible: false
+    modal_visible: false,
   };
 
   onShareAppMessage(obj) {
@@ -34,54 +34,54 @@ export default class Index extends Component {
   }
 
   onInput = (k, v) => {
-    this.setState({[k]: v.detail.value});
+    this.setState({ [k]: v.detail.value });
   };
 
   login = () => {
-    const {username, password, captcha, captcha_show} = this.state;
+    const { username, password, captcha, captcha_show } = this.state;
     Taro.setStorageSync('username', username);
     Taro.setStorageSync('password', password);
     if (captcha_show) {
       this.login2();
       return;
     }
-    $Loading({text: '正在登录'});
+    $Loading({ text: '正在登录' });
     request.post('/jiaowu/login', {
       username,
       password,
-      captcha
+      captcha,
     }).then(e => {
       $Loading.hide();
       if (e.code === 0) {
         Taro.setStorageSync('name', e.name);
         Taro.setStorageSync('cookies', e.cookies);
         Taro.redirectTo({
-          url: '/pages/home/index'
+          url: '/pages/home/index',
         });
       } else if (e.code === 1) {
         this.setState({
           captcha_show: true,
           captcha_data: e.captcha,
           captcha_cookies: e.cookies,
-          captcha_params: e.lt
+          captcha_params: e.lt,
         });
       } else {
         throw new Error(e.msg);
       }
     }).catch(e => {
       $Loading.hide();
-      this.setState({captcha_show: false});
+      this.setState({ captcha_show: false });
       showModal(e.message || e.errMsg);
     });
   };
 
   refreshCaptcha = () => {
-    const {captcha_cookies} = this.state;
-    $Loading({text: '刷新中'});
+    const { captcha_cookies } = this.state;
+    $Loading({ text: '刷新中' });
     request.get(`/jiaowu/captcha?cookies=${encodeURIComponent(captcha_cookies)}`).then(e => {
       $Loading.hide();
       if (e.code === 0) {
-        this.setState({captcha_data: e.captcha});
+        this.setState({ captcha_data: e.captcha });
       } else {
         throw new Error(e.msg);
       }
@@ -92,38 +92,38 @@ export default class Index extends Component {
   };
 
   login2 = () => {
-    const {username, password, captcha, captcha_params, captcha_cookies} = this.state;
-    $Loading({text: '正在登录'});
+    const { username, password, captcha, captcha_params, captcha_cookies } = this.state;
+    $Loading({ text: '正在登录' });
     request.post('/jiaowu/login2', {
       username,
       password,
       captcha,
       params: captcha_params,
-      cookies: captcha_cookies
+      cookies: captcha_cookies,
     }).then(e => {
       $Loading.hide();
       if (e.code === 0) {
         Taro.setStorageSync('name', e.name);
         Taro.setStorageSync('cookies', e.cookies);
         Taro.redirectTo({
-          url: '/pages/home/index'
+          url: '/pages/home/index',
         });
       } else {
         throw new Error(e.msg);
       }
     }).catch(e => {
       $Loading.hide();
-      this.setState({captcha_show: false});
+      this.setState({ captcha_show: false });
       showModal(e.message || e.errMsg);
     });
   };
 
   handleModal = (visible) => {
-    this.setState({modal_visible: visible});
+    this.setState({ modal_visible: visible });
   };
 
   render() {
-    const {username, password, captcha, captcha_show, captcha_data, modal_visible} = this.state;
+    const { username, password, captcha, captcha_show, captcha_data, modal_visible } = this.state;
     return (
       <View className='g-container'>
         <MLoading id='loading'/>

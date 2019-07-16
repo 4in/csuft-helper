@@ -1,20 +1,20 @@
-import Taro, {Component} from '@tarojs/taro';
-import {View} from '@tarojs/components';
-import NoData from '../../../components/NoData';
+import { View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
+import { $Loading } from '../../../components/Base';
 import MLoading from '../../../components/MLoading';
-import {$Loading} from '../../../components/Base';
+import NoData from '../../../components/NoData';
 import request from '../../../utils/request';
-import {showModal} from '../../../utils/utils';
+import { showModal } from '../../../utils/utils';
 import './index.scss';
 
 class Cet extends Component {
   config = {
     navigationBarTitleText: '等级考试成绩',
     enablePullDownRefresh: true,
-    backgroundColor: '#f7f7f7'
+    backgroundColor: '#f7f7f7',
   };
   state = {
-    scores: []
+    scores: [],
   };
 
   onShareAppMessage(obj) {
@@ -27,7 +27,7 @@ class Cet extends Component {
   componentDidMount() {
     if (Taro.getStorageSync('cookies') === '') {
       Taro.redirectTo({
-        url: '/pages/index/index'
+        url: '/pages/index/index',
       });
       return;
     }
@@ -43,7 +43,7 @@ class Cet extends Component {
     try {
       const res = await request.get(`/jiaowu/cet`);
       if (res.code === 0) {
-        this.setState({scores: res.data});
+        this.setState({ scores: res.data });
       } else {
         throw new Error(res.msg);
       }
@@ -54,7 +54,7 @@ class Cet extends Component {
   };
 
   render() {
-    const {scores} = this.state;
+    const { scores } = this.state;
     return (
       <View className='g-container'>
         <MLoading id='loading' m-class='white'/>
@@ -105,7 +105,7 @@ class Cet extends Component {
             <NoData/> : null
         }
       </View>
-    )
+    );
   }
 }
 

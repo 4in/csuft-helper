@@ -1,5 +1,5 @@
-import {BASE_URL} from './config'
-import Taro from '@tarojs/taro'
+import Taro from '@tarojs/taro';
+import { BASE_URL } from './config';
 
 const request = (method, uri, params) => {
   return new Promise((resolve, reject) => {
@@ -14,9 +14,9 @@ const request = (method, uri, params) => {
       },
       success(res) {
         console.log(res);
-        if(res.data.code === 401){
+        if (res.data.code === 401) {
           Taro.redirectTo({
-            url: '/pages/index/index'
+            url: '/pages/index/index',
           });
         }
         resolve(res.data);
@@ -27,8 +27,8 @@ const request = (method, uri, params) => {
       complete() {
         Taro.hideLoading();
         Taro.stopPullDownRefresh();
-      }
-    })
+      },
+    });
   });
 };
 const requests = {
@@ -43,7 +43,7 @@ const requests = {
   },
   delete(uri, params = null) {
     return request('DELETE', uri, params);
-  }
+  },
 };
 
 export default requests;

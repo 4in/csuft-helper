@@ -1,24 +1,24 @@
-import Taro, {Component} from '@tarojs/taro'
-import {Image, Swiper, SwiperItem, View} from '@tarojs/components'
+import { Image, Swiper, SwiperItem, View } from '@tarojs/components';
+import Taro, { Component } from '@tarojs/taro';
 
-import './index.scss'
+import './index.scss';
 
 class CustomSwiper extends Component {
   state = {
-    current: 0
+    current: 0,
   };
 
   onBannerChange(e) {
     this.setState({
-      current: e.detail.current
-    })
+      current: e.detail.current,
+    });
   }
 
   onBannerClick(index) {
     const item = this.props.data[index];
-    if (!item.page) return;
+    if (!item.path) return;
     Taro.navigateTo({
-      url: item.page,
+      url: item.path,
     });
   }
 

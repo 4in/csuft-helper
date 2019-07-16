@@ -1,0 +1,18 @@
+.about-us {
+  width: 100%;
+}
+
+.content {
+  font-size: 32px;
+  padding: 20px 5%;
+  color: #808695;
+}
+
+.p {
+  display: block;
+  text-indent: 2em;
+}
+
+.p + .p {
+  margin-top: 20px;
+}

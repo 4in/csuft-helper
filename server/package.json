@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon ./src/index.js"
   },
-  "author": "",
+  "author": "Tmk <tmk@li.cm>",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
